@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Analysis Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>📊 Resume Analysis Report</h1>
+    
+    <div class="report-section">
+      <h2>🔍 Missing Sections:</h2>
+      <ul>
+        {% for sec in missing_sections %}
+          <li class="missing">❌ {{ sec.title() }}</li>
+        {% endfor %}
+        {% if not missing_sections %}
+          <p class="success">✅ All key sections are present!</p>
+        {% endif %}
+      </ul>
+    </div>
+
+    <div class="report-section">
+      <h2>✨ Found Keywords:</h2>
+      {% if found_keywords %}
+        <div class="keyword-list">
+          {% for kw in found_keywords %}
+            <span class="keyword found">{{ kw }}</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="warning">No important keywords found.</p>
+      {% endif %}
+    </div>
+
+    <div class="report-section">
+      <h2>💡 Suggested Keywords to Add:</h2>
+      {% if missing_keywords %}
+        <div class="keyword-list">
+          {% for kw in missing_keywords %}
+            <span class="keyword missing">{{ kw }}</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="success">Great! All important keywords are present!</p>
+      {% endif %}
+    </div>
+
+    <a href="/" class="back-button">🔙 Upload Another Resume</a>
+  </div>
+</body>
+</html>
