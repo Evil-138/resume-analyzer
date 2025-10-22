@@ -1,3 +1,4 @@
-flask
-PyPDF2
-gunicorn
+flask>=3.0.0
+PyPDF2>=3.0.0
+gunicorn>=21.2.0
+Werkzeug>=3.0.0
